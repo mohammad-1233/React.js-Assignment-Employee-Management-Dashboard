@@ -13,9 +13,15 @@ export const EmployeeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, []);
 
   const addEmployee = (employee: Omit<Employee, 'id' | 'createdAt'>): void => {
+    // Generate next sequential ID
+    const maxId = employees.length > 0 
+      ? Math.max(...employees.map(emp => parseInt(emp.id, 10)))
+      : 0;
+    const nextId = (maxId + 1).toString();
+
     const newEmployee: Employee = {
       ...employee,
-      id: Date.now().toString(),
+      id: nextId,
       createdAt: new Date().toISOString().split('T')[0],
     };
     const updatedEmployees = [...employees, newEmployee];

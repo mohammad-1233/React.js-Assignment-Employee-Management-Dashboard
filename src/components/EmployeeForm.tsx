@@ -196,7 +196,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({ employee, onSubmit, onCance
                 errors.state ? 'border-red-500' : 'border-gray-300'
               }`}
             >
-              <option value="">Select a state</option>
+              <option value="">Select  state</option>
               {indianStates.map((state) => (
                 <option key={state} value={state}>
                   {state}
